@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chloe - Juego de Amor</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Pantalla de Inicio -->
+    <div id="main-menu" class="screen">
+        <h1>Chloe</h1>
+        <p class="subtitle">Un juego creado con amor para ti ❤️</p>
+        <button id="play-button">Jugar</button>
+        <button id="instructions-button">Instrucciones</button>
+    </div>
+
+    <!-- Pantalla de Selección de Niveles -->
+    <div id="level-select" class="screen hidden">
+        <h2>Niveles de Amor</h2>
+        <p class="level-message">Cada nivel representa un recuerdo especial contigo</p>
+        <div id="levels-container"></div>
+        <button id="back-to-menu" class="back-button">Volver al Menú</button>
+    </div>
+
+    <!-- Pantalla de Instrucciones -->
+    <div id="instructions" class="screen hidden">
+        <h2>Cómo Jugar</h2>
+        <p>Intercambia piezas adyacentes para formar líneas de 3 o más piezas iguales.</p>
+        <p>Completa los objetivos antes de quedarte sin movimientos.</p>
+        <p class="love-message">Como nuestro amor, este juego requiere paciencia y dedicación ❤️</p>
+        <button id="back-from-instructions" class="back-button">Volver al Menú</button>
+    </div>
+
+    <!-- Pantalla de Juego -->
+    <div id="game-screen" class="screen hidden">
+        <div id="game-info">
+            <div id="level-info">Nivel: <span id="current-level">1</span></div>
+            <div id="score-info">Amor: <span id="current-score">0</span></div>
+            <div id="moves-info">Movimientos: <span id="moves-left">15</span></div>
+        </div>
+
+        <div id="objectives-container">
+            <!-- Los objetivos del nivel se mostrarán aquí -->
+        </div>
+
+        <div id="board-container">
+            <div id="game-board"></div>
+        </div>
+
+        <button id="back-from-game" class="back-button">Salir del Nivel</button>
+    </div>
+
+    <!-- Pantalla de Victoria -->
+    <div id="victory-screen" class="screen hidden">
+        <h2>¡Nivel Completado!</h2>
+        <div id="love-message"></div>
+        <div id="victory-stats">
+            <p>Puntos de amor: <span id="final-score">0</span></p>
+            <p>Corazones ganados: <span id="stars-earned">0</span>/3</p>
+        </div>
+        <button id="next-level-button">Siguiente Nivel</button>
+        <button id="level-select-button">Selección de Niveles</button>
+    </div>
+
+    <!-- Pantalla de Derrota -->
+    <div id="game-over-screen" class="screen hidden">
+        <h2>¡Inténtalo de nuevo!</h2>
+        <p>Como en el amor, a veces hay que intentarlo más de una vez.</p>
+        <p>¡Sé que puedes lograrlo, Chloe!</p>
+        <button id="retry-button">Reintentar</button>
+        <button id="menu-button">Menú Principal</button>
+    </div>
+
+    <script src="levels.js"></script>
+    <script src="script.js"></script>
+</body>
+</html> 
