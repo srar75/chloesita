@@ -1,0 +1,358 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    background-color: #fce4ec; /* Rosa claro */
+    background-image: linear-gradient(45deg, #fce4ec 0%, #f8bbd0 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.screen {
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 35px;
+    box-shadow: 0 10px 30px rgba(233, 30, 99, 0.2);
+    border: 2px solid #f48fb1;
+}
+
+.hidden {
+    display: none;
+}
+
+h1 {
+    font-family: 'Pacifico', cursive;
+    color: #e91e63; /* Rosa */
+    font-size: 3.5rem;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 0px #f8bbd0;
+    line-height: 1.2;
+}
+
+h2 {
+    font-family: 'Pacifico', cursive;
+    color: #e91e63;
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+}
+
+.subtitle {
+    color: #ad1457;
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+.love-message {
+    color: #ad1457;
+    font-style: italic;
+    margin: 20px 0;
+    font-weight: 600;
+}
+
+.level-message {
+    color: #ad1457;
+    margin-bottom: 15px;
+}
+
+button {
+    background-color: #e91e63;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    padding: 14px 28px;
+    margin: 10px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    box-shadow: 0 4px 8px rgba(233, 30, 99, 0.3);
+}
+
+button:hover {
+    background-color: #c2185b;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(233, 30, 99, 0.4);
+}
+
+.back-button {
+    background-color: #9c27b0;
+}
+
+.back-button:hover {
+    background-color: #7b1fa2;
+}
+
+#levels-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.level-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #f06292;
+    color: white;
+    border-radius: 15px;
+    padding: 15px;
+    height: 90px;
+    font-weight: bold;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(240, 98, 146, 0.3);
+}
+
+.level-button.locked {
+    background-color: #bdbdbd;
+    opacity: 0.7;
+}
+
+.level-button:hover:not(.locked) {
+    background-color: #ec407a;
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(240, 98, 146, 0.4);
+}
+
+.level-stars {
+    margin-top: 8px;
+    display: flex;
+}
+
+.star {
+    color: #ff9800;
+    margin: 0 2px;
+    font-size: 1.2rem;
+}
+
+.empty-star {
+    color: #e0e0e0;
+    font-size: 1.2rem;
+}
+
+#game-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+    color: #ad1457;
+    font-weight: 600;
+}
+
+#objectives-container {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+    padding: 12px;
+    background-color: #fce4ec;
+    border-radius: 12px;
+    border: 2px solid #f8bbd0;
+}
+
+.objective {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.objective-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(233, 30, 99, 0.3);
+}
+
+#game-board {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+    gap: 2px;
+    width: 100%;
+    aspect-ratio: 1;
+    background-color: #f8bbd0;
+    border-radius: 15px;
+    padding: 8px;
+    box-shadow: inset 0 0 15px rgba(233, 30, 99, 0.3), 0 8px 16px rgba(233, 30, 99, 0.2);
+    border: 2px solid #f48fb1;
+}
+
+.candy {
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: inset 0 -4px 0 rgba(0, 0, 0, 0.15);
+}
+
+.candy:hover {
+    transform: scale(1.12);
+    z-index: 1;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), inset 0 -4px 0 rgba(0, 0, 0, 0.15);
+}
+
+/* Colores más brillantes y románticos para los caramelos */
+.red { 
+    background-color: #f44336; 
+    background-image: radial-gradient(circle at 70% 30%, rgba(255, 255, 255, 0.3) 5%, transparent 30%);
+}
+.blue { 
+    background-color: #2196f3; 
+    background-image: radial-gradient(circle at 70% 30%, rgba(255, 255, 255, 0.3) 5%, transparent 30%);
+}
+.green { 
+    background-color: #4caf50; 
+    background-image: radial-gradient(circle at 70% 30%, rgba(255, 255, 255, 0.3) 5%, transparent 30%);
+}
+.yellow { 
+    background-color: #ffeb3b; 
+    background-image: radial-gradient(circle at 70% 30%, rgba(255, 255, 255, 0.3) 5%, transparent 30%);
+}
+.purple { 
+    background-color: #9c27b0; 
+    background-image: radial-gradient(circle at 70% 30%, rgba(255, 255, 255, 0.3) 5%, transparent 30%);
+}
+.orange { 
+    background-color: #ff9800; 
+    background-image: radial-gradient(circle at 70% 30%, rgba(255, 255, 255, 0.3) 5%, transparent 30%);
+}
+
+.selected {
+    box-shadow: 0 0 0 3px white, 0 0 0 6px #e91e63;
+    transform: scale(1.12);
+    z-index: 2;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 3px white, 0 0 0 6px #e91e63; }
+    50% { box-shadow: 0 0 0 3px white, 0 0 0 10px #e91e63; }
+    100% { box-shadow: 0 0 0 3px white, 0 0 0 6px #e91e63; }
+}
+
+.removing {
+    animation: remove 0.5s forwards;
+}
+
+.falling {
+    transition: transform 0.5s;
+}
+
+@keyframes remove {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.2);
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(0);
+        opacity: 0;
+    }
+}
+
+#victory-screen, #game-over-screen {
+    text-align: center;
+}
+
+#victory-stats {
+    margin: 20px 0;
+    font-size: 1.2rem;
+    color: #ad1457;
+}
+
+#love-message {
+    font-style: italic;
+    color: #d81b60;
+    margin: 15px 0;
+    font-size: 1.1rem;
+    padding: 10px;
+    background-color: #fce4ec;
+    border-radius: 10px;
+    border: 1px dashed #f48fb1;
+}
+
+/* Estilo para corazones en lugar de estrellas */
+.star:before {
+    content: "❤️";
+}
+
+.empty-star:before {
+    content: "♡";
+}
+
+/* Responsive para pantallas más pequeñas */
+@media (max-width: 600px) {
+    h1 {
+        font-size: 2.8rem;
+    }
+    
+    h2 {
+        font-size: 1.8rem;
+    }
+    
+    .screen {
+        padding: 20px;
+        border-radius: 15px;
+    }
+    
+    button {
+        padding: 12px 20px;
+        font-size: 1rem;
+    }
+    
+    #levels-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    #objectives-container {
+        flex-wrap: wrap;
+    }
+}
+
+/* Animaciones adicionales para mejorar la experiencia */
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+.game-title {
+    animation: float 3s ease-in-out infinite;
+}
+
+/* Efecto para botones y elementos especiales */
+.button-glow {
+    animation: glow 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+    from {
+        box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #e91e63, 0 0 20px #e91e63;
+    }
+    to {
+        box-shadow: 0 0 10px #fff, 0 0 15px #ff4081, 0 0 20px #ff4081, 0 0 25px #ff4081;
+    }
+}
+
+/* Transición suave para las pantallas */
+.screen {
+    transition: opacity 0.5s ease-in-out;
+}
